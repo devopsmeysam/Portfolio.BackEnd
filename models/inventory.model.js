@@ -1,0 +1,29 @@
+/* Filename: inventory.model.js
+Student Name: Meysam Mahdavikhansari
+Student ID: 301248106
+Date: Thursday, October 18th, 2022 */
+
+let mongoose = require('mongoose');
+
+//Creates a model class:
+
+let inventoryModel = mongoose.Schema(
+    {
+        item: String,
+        qty: Number,
+        tags: [],
+        status: String,
+        size: {
+            h: Number,
+            w: Number,
+            uom: String
+        },
+        owner: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "user"
+        }
+    }, {
+        collection: "inventory"
+    });
+
+    module.exports = mongoose.model('Inventory', inventoryModel);
